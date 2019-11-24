@@ -1,4 +1,4 @@
-#用于测试cudnn.benchmark中关于chda加速卷积运算的效果
+#用于测试cudnn.benchmark中关于cuda加速卷积运算的效果
 #参考:https://zhuanlan.zhihu.com/p/73711222
 import time
 import argparse
