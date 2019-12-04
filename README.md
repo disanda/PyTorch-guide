@@ -40,3 +40,7 @@ c = nn.binary_cross_entropy(a,b)
 总结一下，两个库都可以实现神经网络的各层运算。其他包括卷积、池化、padding、激活(非线性层)、线性层、正则化层、其他损失函数Loss，两者都可以实现
 
 不过nn.functional毕竟只是nn的子库，nn的功能要多一些，还可以实现如Sequential()这种将多个层弄到一个序列这样牛逼的骚操作。
+
+https://pytorch.org/docs/stable/nn.html#
+
+https://pytorch.org/docs/stable/nn.functional.html#
