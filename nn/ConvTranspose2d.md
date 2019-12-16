@@ -6,6 +6,11 @@
 
 >torch.nn.ConvTranspose2d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros')
 
+- 这里参数channels就是C
+- 输入到输出不会改变N(图片的数量)
+- 首先会改变C，即输入通道(in_channels)到输出通道(out_channels)
+- 其次根据kernel_size(1保持不变，n>1时尺寸会加n，3会加2，以此类推)，以及stride(1保持不便，n>1时尺寸会n*2-n+1)
+
 ```py
 >>> # With square kernels and equal stride
 >>> m = nn.ConvTranspose2d(16, 33, 3, stride=2)
