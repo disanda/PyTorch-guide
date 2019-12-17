@@ -43,6 +43,6 @@ tensor([ 0.,  0.,  0.])
 - 总结
 tensor的变量a加detach(即a.detach())是防止变量变量改变的时候，计算出错误的梯度.
 
-
+- 参考
 https://github.com/pytorch/pytorch/issues/6990
 https://zhuanlan.zhihu.com/p/83329768
