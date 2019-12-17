@@ -2,6 +2,13 @@
 
 当一个tensor的requires_grad=True时，它的复制变量detach()和data一个不可导，一个可导
 
+```py
+t = torch.tensor([0., 1.], requires_grad=True)
+t2 = t.detach()
+t3 = t.data
+print(t2.requires_grad, t3.requires_grad)  # ouptut: False, False
+```
+
 不可导
 ```py
 >>> a = torch.tensor([1,2,3.], requires_grad = True)
