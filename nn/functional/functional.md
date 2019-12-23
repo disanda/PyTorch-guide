@@ -1,6 +1,8 @@
 ## 浅谈torch.nn库和torch.nn.functional库
 
-这两个库很类似，都涵盖了神经网络的各层操作，只是用法有点不同，nn下是类实现，nn.functional下是函数实现。
+这两个库很类似，都涵盖了神经网络的各层操作，只是用法有点不同，
+
+>nn下是类实现，nn.functional下是函数实现。
 
 ### conv1d
 
