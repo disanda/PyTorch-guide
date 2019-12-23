@@ -29,3 +29,53 @@ x.grad()
 
 ```
 
+- grad
+
+计算梯度的函数,可求二阶导
+>torch.autograd.grad(outputs, inputs, grad_outputs=None, retain_graph=None, create_graph=False, only_inputs=True, allow_unused=False)
+
+grad_outputs:是参数值
+create_graph:bool值，确认是否创建梯度图节点，用于算高阶梯度
+
+```py
+
+
+import torch
+ 
+x = torch.randn(3, 4).requires_grad_(True)
+for i in range(3):
+    for j in range(4):
+        x[i][j] = i + j
+y = x ** 2
+print(x)
+print(y)
+weight = torch.ones(y.size())
+print(weight)
+dydx = torch.autograd.grad(outputs=y,
+                           inputs=x,
+                           grad_outputs=weight,
+                           retain_graph=True,
+                           create_graph=True,
+                           only_inputs=True)
+
+# (x**2)' = 2*x 
+# dydx的形式是元组
+
+print(dydx[0])
+d2ydx2 = torch.autograd.grad(outputs=dydx[0],
+                             inputs=x,
+                             grad_outputs=weight,
+                             retain_graph=True,
+                             create_graph=True,
+                             only_inputs=True)
+
+```
+
+
+
+
+https://pytorch.org/docs/stable/autograd.html
+
+https://blog.csdn.net/qq_36556893/article/details/91982925
+
+https://www.cnblogs.com/hellcat/p/8453615.html
