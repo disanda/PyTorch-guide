@@ -41,8 +41,11 @@ create_graph:bool值，确认是否创建梯度图节点，用于算高阶梯度
 
 
 import torch
- 
-x = torch.randn(3, 4).requires_grad_(True)
+from torch.autograd import Variable
+
+x = Variable(torch.randn(3,4),requires_grad=True) 
+#x = torch.randn(3, 4).requires_grad_(True)
+
 for i in range(3):
     for j in range(4):
         x[i][j] = i + j
