@@ -1,7 +1,7 @@
 
 ## torch.autograd
 
-- Variable
+### Variable
 
 其中autograd.Variable为核心类，其在tensor的基础上增加了求导(梯度)功能，其由一个tensor(data)，以及tensor的梯度(grad)，
 以及tensor的函数关系(grad_fn)构成。
@@ -29,13 +29,13 @@ x.grad()
 
 ```
 
-- grad
+### grad
 
 计算梯度的函数,可求二阶导
 >torch.autograd.grad(outputs, inputs, grad_outputs=None, retain_graph=None, create_graph=False, only_inputs=True, allow_unused=False)
 
-grad_outputs:是参数值
-create_graph:bool值，确认是否创建梯度图节点，用于算高阶梯度
+- grad_outputs:是参数值
+- create_graph:bool类型，确认是否创建梯度图节点，用于算高阶梯度
 
 ```py
 
