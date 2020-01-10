@@ -34,7 +34,7 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=4,shuffle=True, n
 dataiter = iter(trainloader)
 images = dataiter.next()
 
-img_grid = torchvision.utils.make_grid(images)
-matplotlib_imshow(img_grid, one_channel=True)
+img_grid = torchvision.utils.make_grid(images) #tensor 4D 转 3D，[B,C,H,W]转换为grid:[C,H,W]
+matplotlib_imshow(img_grid, one_channel=True) #tensor:[C,H,W]转换为np:[H,W,C]
 
 ```
