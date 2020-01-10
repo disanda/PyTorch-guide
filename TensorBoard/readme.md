@@ -127,4 +127,9 @@ writer.add_embedding(features,
 writer.close()
 ```
 
+## 命令行操作
+dir是board文件路径
+>tensorboard --logdir=dir
 
+## 参考
+https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html#inspect-the-model-using-tensorboard
