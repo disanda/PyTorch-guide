@@ -39,8 +39,8 @@ output.shape #(10,1,16,16),最后通道输出为1，图片经过4次转置卷积
 >代表各层结点的参数
 
 ```py
-liter=g.parameters()#是一个迭代器，需要列表化显示
-y = list(liter)
+liter=g.parameters()#liter是一个参数迭代器，需要列表化显示
+y = list(liter)#参数
 len(y)#是10，代表网络有10层
 y[0].shape#[3,256,4,4]代表第一层参数
 y[1].shape#[256]
