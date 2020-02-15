@@ -20,7 +20,9 @@
 
 backward()可以传入一个集合，用于控制各个变量导数的权重,
 
->如backward([1,2,3]),导数的权重的结果就是:d=d1*1+d2*2+d3*3
-
+```py
+如backward([1,2,3]),
+导数的权重的结果就是:d=d1*1+d2*2+d3*3
+```
 ## refrence
 https://www.cnblogs.com/JeasonIsCoding/p/10164948.html
