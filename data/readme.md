@@ -6,8 +6,9 @@
 
 要实现加载和预处理数据可分为以下两个步骤：
 
-### 1.加载数据集(Dateset)
+## 1.加载数据集(Dateset)
 
+### 1.1 自带数据集(Mnist/FashionMnist等)
 加载时需要完成数据格式的转换(transform).
 
 一种加载方法是用自带的数据集,来自torchvision大类:
@@ -26,16 +27,21 @@ testset = torchvision.datasets.FashionMNIST('./data',
     train=False,
     transform=transform)
 ```
+### 1.2 自备图片
+若要实现自有文件图片，需要实现一个继承torch.utils.data.Dataset的类.这里dataset有两种实现方式:
+- map-style(类似数组)
+需要实现两个数组函数__getitem__()和__len__()。
+- Iterable-style(类似指针)
+这里需要实现迭代函数__iter()__。
 
-另一种是来自文件图片，需要实现一个继承torch.utils.data.Dataset的类.
-并实现__getitem__函数，在该函数中可以通过索引把图像数据转换，返回为tensor数据
+下例实现map-style()函数，在该函数中可以通过索引把图像数据转换，返回为tensor数据.
 
 ```py
 import torch.utils.data as data
 class DatasetFromFolder(data.Dataset):
     def __init__(self):
         super().__init__()
-        self.path = 'data/pose'
+        self.path = 'data/pose'#指定自己的路径
         self.image_filenames = [x for x in listdir(self.path)]
     def __getitem__(self, index):
         a = Image.open(join(self.path, self.image_filenames[index])).convert('L')
@@ -72,5 +78,6 @@ class DatasetFromFolder(data.Dataset):
      #torchvision.utils.save_image(x, './pose-img/%d.jpg'%(i), nrow=5)
 ```
 
-
+## 4.其他
+如果在使用datasets.ImageFolder(path)时,出现 'Found 0 files in subfolders of: xxx'这个错误，还是乖乖用继承上述类实现加载自身数据吧。
 
