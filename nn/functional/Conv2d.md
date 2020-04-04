@@ -1,4 +1,6 @@
-# nn.Conv2d
+# Conv2d
+
+## nn.Conv2d
 是一个类
 ```
 conv = nn.Conv2d(3, 1, 3) #参数代表输入channel为3,输出channel为1,卷积核(weight)为3*3的随机矩阵,维度为weight:3,1,3,3
