@@ -10,6 +10,7 @@
 - 输入到输出不会改变N(图片的数量)
 - 首先会改变C，即输入通道(in_channels)到输出通道(out_channels)
 - 其次根据kernel_size(1保持不变，n>1时尺寸会加n，3会加2，以此类推)，以及stride(1保持不便，n>1时尺寸会n*2-n+1)
+- 通过padding填充，可以让不同的kernel_size和stride下让输入输出保持不变
 
 ```py
 >>> # With square kernels and equal stride
