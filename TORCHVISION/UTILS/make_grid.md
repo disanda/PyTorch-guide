@@ -1,6 +1,6 @@
 ## make_grid()
 
-可以将一个数据由标准的loader状态转换为一个画图后的坐标状态
+讲tensor格式变为图像格式，即[n,c,w,h]-->[n*c,w,h],且是按行列和padding排好的
 
 >torchvision.utils.make_grid(tensor, nrow=8, padding=2, normalize=False, range=None, scale_each=False, pad_value=0)
 
