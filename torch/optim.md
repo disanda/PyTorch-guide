@@ -13,7 +13,7 @@
 > optimG.step()
 
 以GAN为例:
-```
+```python
 import torch
 criterion = torch.BCELoss()
 netG = G()
