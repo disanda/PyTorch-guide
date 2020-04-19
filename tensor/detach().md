@@ -1,4 +1,19 @@
-# tensor的detach()函数和data属性
+# detach
+detach是一个对tensor变量解藕的参数，当变量用到了detach, 那么它就不在可岛，其在计算图中的model也无法更新梯度。
+从而也就不能更新对应model中的参数。
+
+可用于训练时只更新部分网络梯度，如下A,B网络
+```python
+# y=A(x), z=B(y) 求B中参数的梯度，不求A中参数的梯度
+y = A(x)
+z = B(y.detach())
+z.backward()
+```
+用了detach(),在计算z.backward()时，就不会再去求和y有关的网络A的梯度，只求B()的梯度，也就是只更新B(),从而减轻计算量
+
+
+
+## tensor的detach()函数和data属性
 
 当一个tensor的requires_grad=True时，它的复制变量detach()和data一个不可导，一个可导
 
@@ -9,40 +24,8 @@ t3 = t.data
 print(t2.requires_grad, t3.requires_grad)  # ouptut: False, False
 ```
 
-不可导
-```py
->>> a = torch.tensor([1,2,3.], requires_grad = True)
->>> out = a.sigmoid()
->>> c = out.detach()
->>> c.zero_()  
-tensor([ 0.,  0.,  0.])
-
->>> out  # modified by c.zero_() !!
-tensor([ 0.,  0.,  0.])
-
->>> out.sum().backward()  # Requires the original value of out, but that was overwritten by c.zero_()
-RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation
-```
-
-可导，但是导数错误
-```py
->>> a = torch.tensor([1,2,3.], requires_grad = True)
->>> out = a.sigmoid()
->>> c = out.data
->>> c.zero_()
-tensor([ 0.,  0.,  0.])
-
->>> out  # out  was modified by c.zero_()
-tensor([ 0.,  0.,  0.])
-
->>> out.sum().backward()
->>> a.grad  # The result is very, very wrong because `out` changed!
-tensor([ 0.,  0.,  0.])
-```
-
-- 总结
-tensor的变量a加detach(即a.detach())是防止变量变量改变的时候，计算出错误的梯度.
 
 - 参考
+https://www.cnblogs.com/jiangkejie/p/9981707.html
 https://github.com/pytorch/pytorch/issues/6990
 https://zhuanlan.zhihu.com/p/83329768
