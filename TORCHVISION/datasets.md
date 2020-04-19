@@ -4,7 +4,8 @@
 ## mnist
 
 ```py
-dataset = dset.MNIST(root='./', download=True,
+from torchvision import datasets, transforms
+dataset = datasets.MNIST(root='./', download=True,
                            transform=transforms.Compose([
                                transforms.Resize(64),#可以将图片处理为64*64
                                transforms.ToTensor(),
@@ -18,4 +19,11 @@ a = dataset[0]
 a[0] #图片
 a[1] #label
 
+```
+
+## 配合dataloader取出
+这个是一个迭代器，一次一个batch_szie大小
+```py
+from torch.utils.data import DataLoader
+dataloader= DataLoader(dataset,batch_size=batch_size, shuffle=True)
 ```
