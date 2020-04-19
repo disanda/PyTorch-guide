@@ -22,7 +22,7 @@ a[1] #label
 ```
 
 ## 配合dataloader取出
-这个是一个迭代器，一次一个batch_szie大小
+这个是一个迭代器，一次一个batch_szie大小,可以反复循环迭代
 ```py
 from torch.utils.data import DataLoader
 dataloader= DataLoader(dataset,batch_size=batch_size, shuffle=True)
