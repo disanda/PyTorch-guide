@@ -137,4 +137,5 @@ y = l(x) # y.shape:[1,1,5,5]
 ### 参考
 
 https://pytorch.org/docs/master/nn.html#torch.nn.ConvTranspose2d
+
 https://github.com/vdumoulin/conv_arithmetic
