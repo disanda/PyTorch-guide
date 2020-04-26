@@ -22,7 +22,7 @@
 
 卷积核移动的步数，默认1步，增大步数会忽略局部细节计算，适用于高分辨率的计算提升
 
-![no_padding_no_strides.gif](https://i.loli.net/2020/04/26/hikOAHsaL3mv5jf.gif)
+![J6sFqf.gif](https://s1.ax1x.com/2020/04/26/J6sFqf.gif)
 
 ```
 import torch
