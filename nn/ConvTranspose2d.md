@@ -1,16 +1,43 @@
-# ConvTranspose2d
-2D的转置卷积
+# 卷积与反卷积
 
-- input(N,C,H,W)
-- output( N,C,H,W)
+卷积和反卷积是图片计算在深度学习中常用的上采样和下采样操作。相比其他采样操作，卷积计算不仅可以保存参数的梯度传递(适用用BP),还可以改变图片的通道以更好的整合局部特征。
+
+在torchn.nn中,卷积操作是一个函数，输入为一组图片或特征变量[n,c,w,h],输出也为一组变量[n,c,w,h].变量类型为tensor.
+
+## 1.Conv2d
+
+卷积可以压缩整合图片特征，让通道/宽/高分别为:[c,w,h]的特征图片通过Conv2d。变为更多的通道(维度)c，更小的尺寸W/H.
+
+这里有几个参数比较重要:
+
+- padding
+
+就是填充的意思，通过padding，可以填充图片的边缘，让图片的边缘的特征得到更充分的计算(不至于被截断)
+
+- kernel_size
+
+卷积核尺寸，尺寸越大‘感受野’越大，及处理的特征单位越大，同时计算量也越大
+
+- stide
+
+卷积核移动的步数，默认1步，增大步数会忽略局部细节计算，适用于高分辨率的计算提升
+
+![image.png](https://i.loli.net/2020/04/26/w1hTiuOId8yNPCg.png)
+
+```
+import torch
+import torch.nn as nn
+
+x = torch.randn(1,1,4,4)
+l = nn.Conv2d(1,1,3)#Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1),padding=0)
+y = l(x) # y.shape:[1,1,2,2]
+```
+
+## 2.ConvTranspose2d
+
+转置卷积，也称为反卷积(deconvlution)和分部卷积(fractionally-strided convolution)。为卷积的逆操作，即把特征的维度压缩，但尺寸放大。
 
 >torch.nn.ConvTranspose2d(in_channels, out_channels, kernel_size, stride=1, padding=0, output_padding=0, groups=1, bias=True, dilation=1, padding_mode='zeros')
-
-- 这里参数channels就是C
-- 输入到输出不会改变N(图片的数量)
-- 首先会改变C，即输入通道(in_channels)到输出通道(out_channels)
-- 其次根据kernel_size(1保持不变，n>1时尺寸会加n，3会加2，以此类推)，以及stride(1保持不便，n>1时尺寸会n*2-n+1)
-- 通过padding填充，可以让不同的kernel_size和stride下让输入输出保持不变
 
 ```py
 >>> # With square kernels and equal stride
@@ -30,3 +57,5 @@ torch.Size([1, 16, 6, 6])
 >>> output.size()
 torch.Size([1, 16, 12, 12])
 ```
+
+
