@@ -22,13 +22,17 @@
 
 卷积核移动的步数，默认1步，增大步数会忽略局部细节计算，适用于高分辨率的计算提升
 
-### padding=0,stride=1,kerner_size=3
+### 1.2 卷积可视化 
+
+蓝色为输入，蓝色上的阴影为卷积核(kernel)，绿色为输出，蓝色边缘的白色框为padding
+
+- padding=0,stride=1,kerner_size=3
 
 ![image](https://i.loli.net/2020/04/26/hikOAHsaL3mv5jf.gif)
 
 >尺寸从[4,4]->[2,2]
 
-```
+```python
 import torch
 import torch.nn as nn
 
@@ -36,6 +40,21 @@ x = torch.randn(1,1,4,4)
 l = nn.Conv2d(1,1,3)#Conv2d(1, 1, kernel_size=(3, 3), stride=(1, 1),padding=0)
 y = l(x) # y.shape:[1,1,2,2]
 ```
+- padding=2,stride=1,kerner_size=4
+
+![arbitrary_padding_no_strides.gif](https://i.loli.net/2020/04/26/kMnaiNpbAqldIhX.gif)
+
+>尺寸从[5,5]->[6,6]
+
+```python
+import torch
+import torch.nn as nn
+
+x = torch.randn(1,1,5,5)
+l = nn.Conv2d(1,1,4,padding=2)#Conv2d(1, 1, kernel_size=4,stride=1,padding=2)
+y = l(x) # y.shape:[1,1,6,6]
+```
+
 
 ## 2.ConvTranspose2d
 
