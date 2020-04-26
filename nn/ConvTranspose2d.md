@@ -22,7 +22,11 @@
 
 卷积核移动的步数，默认1步，增大步数会忽略局部细节计算，适用于高分辨率的计算提升
 
+### padding=0,stride=1,kerner_size=3
+
 ![image](https://i.loli.net/2020/04/26/hikOAHsaL3mv5jf.gif)
+
+>尺寸从[4,4]->[2,2]
 
 ```
 import torch
