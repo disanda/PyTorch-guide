@@ -13,7 +13,9 @@ GA = GA['scaleLayers'] #Module_List
 
 - Sequence
 
-https://www.cnblogs.com/jiangkejie/p/12952174.html
+  1.https://www.cnblogs.com/jiangkejie/p/12952174.html
 
+  2.https://zhuanlan.zhihu.com/p/115251842
+  
 - ModuleList
 
