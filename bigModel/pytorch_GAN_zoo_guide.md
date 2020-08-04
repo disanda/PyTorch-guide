@@ -2,3 +2,8 @@
 
 - latent-code维度:512
 > z = torch.randn(10,512)
+
+- pre_model加载
+> G = model.netG()
+
+
