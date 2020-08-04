@@ -8,7 +8,8 @@
 
 - 存储结果
 ```py
-samples = (samples + 1) / 2 #颜色更深[-1,1]->[0,1]
-torchvision.utils.save_image(samples, 'c_c_%s.jpg' % (time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())), nrow=20)
+x = G(z)
+x = (x + 1) / 2 #颜色更深[-1,1]->[0,1]
+torchvision.utils.save_image(x, 'text.png', nrow=10)
 ```
 
