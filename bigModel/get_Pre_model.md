@@ -50,9 +50,9 @@ class GNet(nn.Module):
         ## Normalize the input ?
         if self.model.normalizationLayer is not None:
             x = self.model.normalizationLayer(x)
-        x = x.view(-1, num_flat_features(x))
+        x = x.view(-1, num_flat_features(x))#20,512
         # format layer
-        x = self.model.leakyRelu(self.model.formatLayer(x))
+        x = self.model.leakyRelu(self.model.formatLayer(x))#20,8192
         x = x.view(x.size()[0], -1, 4, 4)
         x = self.model.normalizationLayer(x)
         # Scale 0 (no upsampling)
