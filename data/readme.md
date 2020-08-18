@@ -39,14 +39,16 @@ testset = torchvision.datasets.FashionMNIST('./data',
 ```py
 import torch.utils.data as data
 class DatasetFromFolder(data.Dataset):
-    def __init__(self):
+    def __init__(self,path=None,transform=None):
         super().__init__()
         self.path = 'data/pose'#指定自己的路径
         self.image_filenames = [x for x in listdir(self.path)]
     def __getitem__(self, index):
         a = Image.open(join(self.path, self.image_filenames[index])).convert('L')
         a = a.resize((64, 64), Image.BICUBIC)
-        a = transforms.ToTensor()(a)
+        #a = transforms.ToTensor()(a)
+        if self.transform:
+            a = self.transform(a)
         return a
     def __len__(self):
         return len(self.image_filenames)
