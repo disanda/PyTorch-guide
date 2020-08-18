@@ -57,7 +57,8 @@ class DatasetFromFolder(data.Dataset):
 就是加载数据，这里需要定义一个DataLoader类并设置必要参数,如一批数据batch的数量，是否随机，
 
 ```py
- train_loader = torch.utils.data.DataLoader(
+pose = DatasetFromFolder()
+train_loader = torch.utils.data.DataLoader(
      dataset=pose,
      batch_size=25,
      shuffle=False,
