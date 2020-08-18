@@ -43,6 +43,7 @@ class DatasetFromFolder(data.Dataset):
         super().__init__()
         self.path = 'data/pose'#指定自己的路径
         self.image_filenames = [x for x in listdir(self.path)]
+        self.transform = transform
     def __getitem__(self, index):
         a = Image.open(join(self.path, self.image_filenames[index])).convert('L')
         a = a.resize((64, 64), Image.BICUBIC)
