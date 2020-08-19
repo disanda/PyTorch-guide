@@ -1,0 +1,17 @@
+模型参数根据y=wx+b,因此参数包括w,b
+
+- parameters
+- weight
+- bias
+
+
+```py
+import torch
+conv = torch.nn.Conv2d(2,4,2)
+
+print(list(conv.parameters()))
+
+print(conv.weight)
+
+print(conv.bias)
+```
