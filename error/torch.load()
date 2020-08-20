@@ -1,0 +1,22 @@
+# 模型加载错误
+
+model = Model()
+model.load_state_dict(torch.load('path')) 
+>RuntimeError: Error(s) in loading state_dict for Model
+
+1. 训练的时候是并行的，用cpu加载模型就会报错
+
+>创建模型对象的时候加并行封装
+
+```
+model = torch.nn.DataParallel(Model())
+```
+
+2. 训练的时候用GPU，用cpu加载的时候就会报错
+
+> 添加load_state_dict() 方法 添加 map_location 参数改变加载位置
+
+```
+model.load_state_dict(torch.load('path'), map_location = 'cpu')
+```
+
