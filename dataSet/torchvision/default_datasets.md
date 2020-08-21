@@ -10,7 +10,7 @@ dataset = datasets.MNIST(root='./', download=True,
                            transform=transforms.Compose([
                                transforms.Resize(64),# 可以将图片处理为64*64
                                transforms.ToTensor(),
-                               transforms.Normalize((0.5,), (0.5,)), # 从 [0，255] bond到 [-1,1] 适用 Sigmoid
+                               transforms.Normalize((0.5,), (0.5,)), # 从 [0，1] bond到 [-1,1] 适用 Sigmoid
                            ]))
                           
 len(dataset) #60000个样本
