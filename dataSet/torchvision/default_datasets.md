@@ -3,6 +3,7 @@
 
 ## mnist
 
+- 先加载dataset
 ```py
 from torchvision import datasets, transforms
 dataset = datasets.MNIST(root='./', download=True,
@@ -21,9 +22,25 @@ a[1] #label
 
 ```
 
-## 配合dataloader取出
+- 配合dataloader取出batch
 这个是一个迭代器，一次一个batch_szie大小,可以反复循环迭代
 ```py
 from torch.utils.data import DataLoader
 dataloader= DataLoader(dataset,batch_size=batch_size, shuffle=True)
 ```
+
+## fasion-mnist
+```
+trainset = torchvision.datasets.FashionMNIST('./data',
+    download=True,
+    train=True,
+    transform=transform)
+dataloader = torch.utils.data.DataLoader(
+     dataset=trainset,
+     batch_size=25,
+     shuffle=False,
+     num_workers=0,
+     pin_memory=True,#用Nvidia GPU时生效
+     drop_last=True
+ )
+ ```
