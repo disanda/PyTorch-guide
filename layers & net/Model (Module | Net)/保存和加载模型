@@ -6,7 +6,7 @@
 
 - 保存多个模型
 
->按dict方式保存
+>按dict方式保存(单个网络)
 
 ```py
 torch.save(
@@ -27,10 +27,16 @@ model = TheModelClass(...)
 model.load_state_dict(model_dict['G'])
 ```
 
+只有一个网络可以按dict方式添加
+```py
+model.load_state_dict(torch.load('./G_param.pkl'))
+```
+
+
 ## 保存完整模型
 
  - 保存
 >torch.save(model, '\model.pkl')
  - 加载
 >model = torch.load('\model.pkl')
-这里加载不需要通过模型对象
+这里加载不需要通过模型对象,多个模型对象的情况下是一个字典
