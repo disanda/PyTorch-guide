@@ -76,7 +76,7 @@ nn.functional.xxx是函数接口，而nn.Xxx是nn.functional.xxx的类封装，�
 
 因此nn.Xxx除了具有nn.functional.xxx功能(通过类中的forward方法实现)，内部附带了nn.Module相关的属性和方法，例如train(), eval(),load_state_dict, state_dict 等,可以自动管理各层的参数,同时还可以实现如Sequential()将多个运算层组合为一个逻辑层。
 
-参考
+## 参考
 https://pytorch.org/docs/stable/nn.html#
 
 https://pytorch.org/docs/stable/nn.functional.html#
