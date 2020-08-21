@@ -1,7 +1,7 @@
 # 浅谈torch.nn库和torch.nn.functional库
 这两个库很类似，都涵盖了神经网络的各层操作，只是用法有点不同，
 
-## nn
+## 1.nn
 
 nn是类实现，即在nn下计算层是一个类，一般继承nn.module通过定义forward()函数计算其值
 
@@ -22,7 +22,7 @@ class Conv1d(_ConvNd):
         return torch.nn.functional.conv1d(input, self.weight, self.bias, self.stride,
                         self.padding, self.dilation, self.groups)
 ```
-## nn.functional
+## 2.nn.functional
 
 nn.functional下是通过函数实现计算层，将层中的可训练参数传入函数functional的参数即可使用，其会直接返回一个torch.nn.functional的函数，和上面类中的forward()中的函数一致
 
@@ -44,7 +44,7 @@ def conv1d(input, weight, bias=None, stride=1, padding=0, dilation=1,
 1.nn.Xxx不需要自己定义和管理参数weight；而nn.functional.xxx需要自己定义weight，每次调用的时候都需要手动传入weight
 2.另外droptout用nn定义的话在训练时生效，在eval()时无效。
 
-## 示例
+## 3.示例
 
 损失函数Loss(交叉熵)
 
