@@ -26,6 +26,8 @@ testset = torchvision.datasets.FashionMNIST('./data',
     download=True,
     train=False,
     transform=transform)
+
+real_batch = next(iter(trainset))
 ```
 ### 1.2 自备图片
 若要实现自有文件图片，需要实现一个继承torch.utils.data.Dataset的类.这里dataset有两种实现方式:
