@@ -20,5 +20,6 @@ a2 = a2.squeenze(1) #a2.shape=[16]
 
 ```
 
-
+- 不带参数的squeeze()默认去除所有维度值为1的维度
+- 相反操作有另一个函数:unsqueeze()
 
