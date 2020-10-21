@@ -24,6 +24,26 @@ class Generator_1(nn.Module):
         return self.main(x)
 ```
 
+## 0.网络模型
+
+- state_dict()
+
+返回网络各层的所有信息，包括无参数层(如activation,norm), 返回形式是OrderDict
+
+```
+g = net()
+dict = g.state_dict()
+```
+
+- named_parameters()
+
+这个只返回带参数的层, 返回形式是dict类型的迭代器
+
+```
+dict(netG1.named_parameters())
+```
+
+
 ## 1.网络结构
 
 ```py
@@ -37,7 +57,6 @@ output.shape #(10,1,16,16),最后通道输出为1，图片经过4次转置卷积
 
 ## 2.网络参数
 >代表各层结点的参数
-
 ```py
 liter=g.parameters()#liter是一个参数迭代器，需要列表化显示
 y = list(liter)#参数
@@ -47,3 +66,5 @@ y[1].shape#[256]
 y[2].shape#[256]
 y[3].shape#[256,128,4,4]
 ```
+
+
