@@ -1,4 +1,4 @@
-## nn.Linear()函数
+## 1.nn.Linear() 偏函数
 
 格式：Linear(in_dim,out_dim)
 
@@ -30,7 +30,7 @@ print('ans.shape:\n', ans.shape)
 print(torch.equal(ans, output))
 ```
 
-## 函数操作
+## 2.F.near(x,weight,bias) 函数
 
 >import torch.nn.functional as F
 
