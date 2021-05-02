@@ -1,7 +1,7 @@
 ## 找出每层随机特征
 ## 一种是特征均值，一种是二维特征中选取随机特征
 
-```
+```py
 import torch
 import random
 
