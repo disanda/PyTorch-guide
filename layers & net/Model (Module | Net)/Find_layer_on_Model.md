@@ -1,6 +1,7 @@
 ## 找出每层随机特征
 ## 一种是特征均值，一种是二维特征中选取随机特征
 
+```
 import torch
 import random
 
@@ -16,3 +17,4 @@ def findF_G(model,x):
     y[0]=y[0].squeeze(2).squeeze(2)
     y[-1]= x
     return y
+```
