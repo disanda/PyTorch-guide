@@ -10,3 +10,6 @@
 
 ## 3. y = x.clone().detach() 等效于  y = x.detach().clone()
 y是新开创的内存，且不共享原x的梯度，相当于前向后向都是新的变量
+
+## reference:
+https://blog.csdn.net/Answer3664/article/details/104417013
